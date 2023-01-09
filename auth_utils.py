@@ -54,7 +54,7 @@ class AuthJwtCsrf():
             raise HTTPException(
                 status_code=401, detail="No JWT exist: may not set yet or deleted")
         _, _, value = token.partition(" ")
-        subject = self.encode_jwt(value)
+        subject = self.decode_jwt(value)
         return subject
 
     def verify_update_jwt(self, request) -> tuple[str, str]:
